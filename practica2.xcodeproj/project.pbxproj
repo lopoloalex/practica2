@@ -12,6 +12,9 @@
 		E34BCD4E1F73D49200CCA755 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34BCD4C1F73D49200CCA755 /* Main.storyboard */; };
 		E34BCD501F73D49200CCA755 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E34BCD4F1F73D49200CCA755 /* Assets.xcassets */; };
 		E34BCD531F73D49200CCA755 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34BCD511F73D49200CCA755 /* LaunchScreen.storyboard */; };
+		E34BCD5B1F73D56E00CCA755 /* ParFunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34BCD5A1F73D56E00CCA755 /* ParFunView.swift */; };
+		E350ADCA1F7D073900190700 /* TankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350ADC91F7D073900190700 /* TankModel.swift */; };
+		E350ADCC1F7D0AB000190700 /* TrayectoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E350ADCB1F7D0AB000190700 /* TrayectoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		E34BCD4F1F73D49200CCA755 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E34BCD521F73D49200CCA755 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E34BCD541F73D49200CCA755 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E34BCD5A1F73D56E00CCA755 /* ParFunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParFunView.swift; sourceTree = "<group>"; };
+		E350ADC91F7D073900190700 /* TankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TankModel.swift; sourceTree = "<group>"; };
+		E350ADCB1F7D0AB000190700 /* TrayectoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrayectoryModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				E34BCD481F73D49200CCA755 /* AppDelegate.swift */,
+				E34BCD5A1F73D56E00CCA755 /* ParFunView.swift */,
 				E34BCD4A1F73D49200CCA755 /* ViewController.swift */,
 				E34BCD4C1F73D49200CCA755 /* Main.storyboard */,
 				E34BCD4F1F73D49200CCA755 /* Assets.xcassets */,
 				E34BCD511F73D49200CCA755 /* LaunchScreen.storyboard */,
 				E34BCD541F73D49200CCA755 /* Info.plist */,
+				E350ADC91F7D073900190700 /* TankModel.swift */,
+				E350ADCB1F7D0AB000190700 /* TrayectoryModel.swift */,
 			);
 			path = practica2;
 			sourceTree = "<group>";
@@ -137,6 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E34BCD4B1F73D49200CCA755 /* ViewController.swift in Sources */,
+				E350ADCA1F7D073900190700 /* TankModel.swift in Sources */,
+				E350ADCC1F7D0AB000190700 /* TrayectoryModel.swift in Sources */,
+				E34BCD5B1F73D56E00CCA755 /* ParFunView.swift in Sources */,
 				E34BCD491F73D49200CCA755 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
