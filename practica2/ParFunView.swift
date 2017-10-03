@@ -15,20 +15,67 @@ struct FunctionPoint {
 }
 
 
-protocol ParFunViewDataSource {
+protocol ParFunViewDataSource : class {
     func startFor(_ pfgv: ParFunView) -> Double
     func endFor(_ pfgv: ParFunView) -> Double
     func paramtricFucGrView (_ pfgv : ParFunView, pointAt index : Double)->FunctionPoint
     //puntos de interes  devuelve [fuctionPoint]
-    
-  
-    
 }
 
+@IBDesignable
 class ParFunView: UIView {
-    var dataSource : ParFunViewDataSource!
-    var scaleX = 1.0
-    var scaleY = 1.0
+    
+    @IBInspectable
+    var lineWidth : Double = 3.0
+    
+    @IBInspectable
+    var trajectoryColor : UIColor = UIColor.red
+    
+    // Numero de puntos en el eje X por unidad representada
+    var scaleX: Double = 1.0 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    // Numero de puntos en el eje Y por unidad representada
+    var scaleY: Double = 1.0 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    // Resolucion: Numero de muestras tomadas
+    var resolution: Double = 500 {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    
+    #if TARGET_INTERFACE_BUILDER
+    var dataSource: ParFunViewDataSource!
+    #else
+    weak var dataSource: ParFunViewDataSource!
+    #endif
+    
+    override func prepareForInterfaceBuilder() {
+        
+        class FakeDataSource: ParFunViewDataSource {
+            
+            func startFor(_ pfgv: ParFunView) -> Double  {return 0.0}
+            
+            func endFor(_ pfgv: ParFunView) -> Double {return 200.0}
+            
+            func paramtricFucGrView (_ pfgv : ParFunView, pointAt index : Double)->FunctionPoint {
+                return FunctionPoint(x: index, y: index.truncatingRemainder(dividingBy: 50))
+            }
+        }
+        
+        dataSource = FakeDataSource()
+    }
+    
+    
     
     override func draw(_ rect: CGRect) {
         drawAxis()
@@ -55,18 +102,19 @@ class ParFunView: UIView {
         pathX.lineWidth = 2
         UIColor.black.setStroke()
         pathX.stroke()
-        
-        
-        
     }
+    
     private func drawTrajectory() {
-        let path = UIBezierPath()
+
         let p0 = dataSource.startFor(self)
         let pf = dataSource.endFor(self)
-        let dp = (pf-p0) / 100
+        let dp = max((p0 - pf) / resolution , 0.01)
         let v0 =  dataSource.paramtricFucGrView(self, pointAt: p0)
+        
         let ptX0 = pointForX (v0.x)
         let ptY0 = pointForY(v0.y)
+        
+        let path = UIBezierPath()
         path.move(to: CGPoint(x:ptX0, y:ptY0))
         
         
@@ -78,23 +126,25 @@ class ParFunView: UIView {
             
             path.addLine(to: CGPoint(x: ptX, y: ptY))
         }
-        path.lineWidth = 4
-        UIColor.red.setStroke()
+        
+        path.lineWidth = CGFloat(lineWidth)
+        trajectoryColor.set()
         path.stroke()
         
     }
-    private func pointForX (_ x: Double)->CGFloat{
+    private func pointForX(_ x: Double) -> CGFloat {
         let width = bounds.size.width
         return width/2 + CGFloat(x*scaleX)
-    
     }
-    private func pointForY (_ y: Double)->CGFloat{
+    
+    private func pointForY(_ y: Double) -> CGFloat {
         let height = bounds.size.height
-        return height/2 + CGFloat(y*scaleY)
-        
+        return height/2 - CGFloat(y*scaleY)
     }
-        
-    }
-  
-    
+
+}
+
+
+
+
 

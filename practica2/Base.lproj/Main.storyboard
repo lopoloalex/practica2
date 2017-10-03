@@ -17,26 +17,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYz-vn-AUg" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="163" width="414" height="163"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qZv-Oj-ffJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="326"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqM-YZ-Ycc" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
+                                <subviews>
+                                    <view contentMode="redraw" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vqM-YZ-Ycc" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                        <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="redraw" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZYz-vn-AUg" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="163" width="414" height="163"/>
+                                        <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xni-mA-8M6">
+                                <rect key="frame" x="0.0" y="323" width="414" height="326"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3rA-Mt-QsZ" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="323" width="414" height="152"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.31890888472540591" green="0.95146973515089539" blue="0.97680455450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U44-eF-68H" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="475" width="414" height="163"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.97680455450000003" green="0.50541878523411521" blue="0.75268419159914857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
+                                <subviews>
+                                    <view contentMode="redraw" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3rA-Mt-QsZ" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="163"/>
+                                        <color key="backgroundColor" red="0.31890888472540591" green="0.95146973515089539" blue="0.97680455450000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <view contentMode="redraw" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U44-eF-68H" customClass="ParFunView" customModule="practica2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="163" width="414" height="163"/>
+                                        <color key="backgroundColor" red="0.97680455450000003" green="0.50541878523411521" blue="0.75268419159914857" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="6by-Or-K9y">
                                 <rect key="frame" x="83" y="658" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -45,7 +58,7 @@
                                 <rect key="frame" x="83" y="695" width="258" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </slider>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tiempo" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PkZ-KJ-bKp">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Tiempo" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PkZ-KJ-bKp">
                                 <rect key="frame" x="2" y="657" width="75" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
