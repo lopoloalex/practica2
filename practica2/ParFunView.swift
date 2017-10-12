@@ -26,12 +26,13 @@ protocol ParFunViewDataSource : class {
 class ParFunView: UIView {
     
     @IBInspectable
-    var lineWidth : Double = 3.0
+    var lineWidth : Double = 3.5
     
     @IBInspectable
     var trajectoryColor : UIColor = UIColor.red
     
     // Numero de puntos en el eje X por unidad representada
+    @IBInspectable
     var scaleX: Double = 1.0 {
         didSet {
             setNeedsDisplay()
@@ -39,18 +40,19 @@ class ParFunView: UIView {
     }
     
     // Numero de puntos en el eje Y por unidad representada
+    @IBInspectable
     var scaleY: Double = 1.0 {
         didSet {
             setNeedsDisplay()
         }
     }
-    
-    // Resolucion: Numero de muestras tomadas
     var resolution: Double = 500 {
         didSet {
             setNeedsDisplay()
         }
     }
+    
+ 
     
     
     #if TARGET_INTERFACE_BUILDER
@@ -106,29 +108,25 @@ class ParFunView: UIView {
     
     private func drawTrajectory() {
 
+        let path = UIBezierPath()
         let p0 = dataSource.startFor(self)
         let pf = dataSource.endFor(self)
-        let dp = max((p0 - pf) / resolution , 0.01)
-        let v0 =  dataSource.paramtricFucGrView(self, pointAt: p0)
-        
-        let ptX0 = pointForX (v0.x)
+        let dp = max((pf - p0) / resolution , 0.01)
+        let v0 = dataSource.paramtricFucGrView(self, pointAt: p0)
+        let ptX0 = pointForX(v0.x)
         let ptY0 = pointForY(v0.y)
+        path.move(to: CGPoint(x: ptX0, y: ptY0))
         
-        let path = UIBezierPath()
-        path.move(to: CGPoint(x:ptX0, y:ptY0))
-        
-        
-        for  p in stride(from: p0, to: pf, by: dp){
-            let v =  dataSource.paramtricFucGrView(self, pointAt: p)
+        for p in stride (from: p0, to: pf, by: dp){
+            let v = dataSource.paramtricFucGrView(self, pointAt: p)
             let ptX = pointForX(v.x)
             let ptY = pointForY(v.y)
             
             
             path.addLine(to: CGPoint(x: ptX, y: ptY))
         }
-        
         path.lineWidth = CGFloat(lineWidth)
-        trajectoryColor.set()
+        UIColor.red.setStroke()
         path.stroke()
         
     }
@@ -141,6 +139,7 @@ class ParFunView: UIView {
         let height = bounds.size.height
         return height/2 - CGFloat(y*scaleY)
     }
+
 
 }
 

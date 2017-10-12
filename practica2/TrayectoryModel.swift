@@ -12,13 +12,13 @@ class TrajectoryModel {
     
     let g : Double = 9.8
     
-    var oringinPos = ( x:0.0 , y : 0.0){
+    var oringinPos = ( x:0.0 , y : 10.0){
         didSet {
             update()
         }
     }
     
-    var targetPos  = ( x:0.0 , y : 0.0){
+    var targetPos  = ( x:4.0 , y : 0.0){
         didSet {
             update()
         }
