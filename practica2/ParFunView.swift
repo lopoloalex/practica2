@@ -91,8 +91,9 @@ class ParFunView: UIView {
         let pathY = UIBezierPath()
         pathY.move(to: CGPoint(x: w/2, y: 0))
         pathY.addLine(to: CGPoint( x: w/2, y: h))
+
         
-        pathY.lineWidth = 2
+        pathY.lineWidth = 1
         UIColor.black.setStroke()
         pathY.stroke()
         
@@ -101,7 +102,7 @@ class ParFunView: UIView {
         pathX.move(to: CGPoint(x: 0, y: h/2))
         pathX.addLine(to: CGPoint( x: w, y: h/2))
         
-        pathX.lineWidth = 2
+        pathX.lineWidth = 1
         UIColor.black.setStroke()
         pathX.stroke()
     }

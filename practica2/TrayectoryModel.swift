@@ -12,7 +12,7 @@ class TrajectoryModel {
     
     let g : Double = 9.8
     
-    var oringinPos = ( x:0.0 , y : 10.0){
+    var oringinPos = ( x:0.0 , y : 0.0){
         didSet {
             update()
         }
@@ -30,19 +30,33 @@ class TrajectoryModel {
         }
     }
     
-    private var angle: Double = 0.0
+    private var angle  : Double = 0.0
     private var speedX : Double = 0.0
     private var speedY : Double = 0.0
     
     
     private func update() {
-        angle = atan((speed*speed + sqrt(pow(speed, 4) - g*g*pow(targetPos.x,2) - 2*g*targetPos.y*speed))/(g*targetPos.x))
-        speedX=speed*cos(angle)
-        speedY=speed*sin(angle)
+        
+        let a = pow(speed, 4) - g*g*pow(targetPos.x,2) - 2*g*(targetPos.y)*speed
+        
+        if a < 0 {
+            
+            angle  = 0
+            speedX = 0
+            speedY = 0
+        }
+        else {
+            
+            angle = atan((speed*speed + sqrt(a))/(g*targetPos.x))
+            speedX=speed*cos(angle)
+            speedY=speed*sin(angle)
+        }
+        
     }
     
-
+    
     func timeToTarget() -> Double?{
+    
         return targetPos.x/speedX
         
     }
